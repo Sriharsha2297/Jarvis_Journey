@@ -12,17 +12,42 @@
 # Input: nums = [3,3], target = 6
 # Output: [0,1]
 
-numbers = input("Enter numbers separated by commas: ")
-result = numbers.split(",")
-#
-target = int(input("Enter the target number: "))
-print ("Input list:", result)
-print ("Target number:", target)
-x = len(result)
-print ("Length of the list:", x)
+# numbers = input("Enter numbers separated by commas: ")
+# result = numbers.split(",")
+# target = int(input("Enter the target number: "))
+# print ("Input list:", result)
+# print ("Target number:", target)
+# x = len(result)
+# print ("Length of the list:", x)
 
-for i in range(x):
-    for j in range(i+1, x):
-        if int(result[i]) + int(result[j]) == target:
-            print ("Indices of the two numbers that add up to the target:", [i, j]) 
-            print ("The two numbers that add up to the target:", [result[i], result[j]])
+# for i in range(x):
+#     for j in range(i+1, x):
+#         if int(result[i]) + int(result[j]) == target:
+#             print ("Indices of the two numbers that add up to the target:", [i, j]) 
+#             print ("The two numbers that add up to the target:", [result[i], result[j]])
+
+
+# print ("now that you have got the numbers lets play more")
+
+# Given an integer x, return true if x is a palindrome, and false otherwise.
+# Example 1:
+# Input: x = 121
+# Output: true
+# Explanation: 121 reads as 121 from left to right and from right to left.
+# Example 2:
+# Input: x = -121
+# Output: false
+# Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+
+input = int(input("Enter an integer: "))
+#print (input[0])
+#convert to string
+input_str = str(input)
+y = len(input_str)
+z = y/2 
+for i in range(int(z)):
+    if input_str[i] != input_str[y-1-i]:
+        print ("The integer is not a palindrome.")
+        break
+else:
+    print ("The integer is a palindrome.")
