@@ -1,0 +1,38 @@
+[
+    {
+        "operand1": 3.0,
+        "operator": "*",
+        "operand2": 5.0,
+        "result": 15.0
+    },
+    {
+        "operand1": 4.0,
+        "operator": "*",
+        "operand2": 5.0,
+        "result": 20.0
+    },
+    {
+        "operand1": 3.0,
+        "operator": "+",
+        "operand2": 4.0,
+        "result": 7.0
+    },
+    {
+        "operand1": 4.0,
+        "operator": "*",
+        "operand2": 5.0,
+        "result": 20.0
+    },
+    {
+        "operand1": 4.0,
+        "operator": "+",
+        "operand2": 5.0,
+        "result": 9.0
+    },
+    {
+        "operand1": 4.0,
+        "operator": "*",
+        "operand2": 5.0,
+        "result": 20.0
+    }
+]
