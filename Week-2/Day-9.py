@@ -53,7 +53,16 @@ def mark_task_complete(history, task_id):
             return
     print(f"Task ID {task_id} not found.")
 
-def delete_task(history, task_id):
+def delete_task(history):
+    try:
+        task_id = int(input("Enter task ID to delete: "))
+        if task_id < 1 or task_id > len(history):
+            print(f"Invalid ID. Only {len(history)} tasks exist.")
+            return  # ← inside the if
+    except ValueError:
+        print("Please enter a valid number.")
+        return
+    
     for i, entry in enumerate(history):
         if entry['Task_id'] == task_id:
             del history[i]
