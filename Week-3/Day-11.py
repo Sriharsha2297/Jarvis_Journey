@@ -15,11 +15,14 @@ class Robot:
         time = distance / self.speed
         print(f"{self.name} will take {time:.2f} hours to move {distance} units.")
 
-# Create an instance of Robot
-r1 = Robot(input('Enter robot name: '), int(input('Enter robot speed: ')))
-# Access attributes
-print(r1.name)  # Output: Fanuc
-print(r1.speed)  # Output: 5
-# Call the move method
-r1.move(10)  # Output: Fanuc will take 2.00 hours to move 10 units.
+    def __str__(self):
+        return f"Robot(name={self.name}, speed={self.speed})"
+
+# Example usage
+if __name__ == "__main__":  
+    r1 = Robot(input('Enter robot name: '), int(input('Enter robot speed: ')))
+    print(r1.name)
+    print(r1)
+    print(r1.speed)
+    r1.move(10)
 
