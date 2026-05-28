@@ -1,0 +1,14 @@
+[
+    {
+        "name": "R1",
+        "model": "ModelA",
+        "speed": 5,
+        "status": "active"
+    },
+    {
+        "name": "R2",
+        "model": "ModelB",
+        "speed": 3,
+        "status": "inactive"
+    }
+]
