@@ -10,7 +10,7 @@ import asyncio
 import httpx
 
 # Step 1: write an async function that fetches weather for ONE city
-async def get_weather(session, city):
+async def get_weather(session: httpx.AsyncClient, city: str) -> str:
     url = f"https://wttr.in/{city}?format=3"
     try:
         response = await session.get(url, timeout=5)  # don't wait forever
@@ -24,13 +24,13 @@ async def get_weather(session, city):
         return f"{city}: ❌ network error"
 
 # Step 2: write the main function that fetches ALL cities at once
-async def main(cities):
+async def main(cities: list[str]) -> None:
     async with httpx.AsyncClient() as session:
         results = await asyncio.gather(*[get_weather(session, city) for city in cities])
         for result in results:
             print(result)
 
-cities = input("Enter cities separated by commas: ")
-cities = [city.strip() for city in cities.split(",")]
+cities_input: str = input("Enter cities separated by commas: ")
+cities: list[str] = [city.strip() for city in cities_input.split(",")]
 
 asyncio.run(main(cities))
