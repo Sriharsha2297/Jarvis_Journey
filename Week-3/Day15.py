@@ -6,31 +6,33 @@
 # n CLI menu
 # n This should feel like managing your shop floor.
 
+
+
 class Robot:
-    def __init__(self, name, model, speed, status):
+    def __init__(self, name: str, model: str, speed: int, status: str) -> None:
         self.name = name
         self.model = model
         self.speed = speed
         self.status = status
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Robot(name={self.name}, model={self.model}, speed={self.speed}, status={self.status})"
     
 class Fleet:
-    def __init__(self):
+    def __init__(self)-> None:
         self.robots = []
 
-    def add_robot(self, robot):
+    def add_robot(self, robot: Robot) -> None:
         self.robots.append(robot)
 
-    def get_active(self):
+    def get_active(self)-> list[Robot]:
         return [r for r in self.robots if r.status == 'active']
 
-    def get_fastest(self):
+    def get_fastest(self)-> Robot:
         return max(self.robots, key=lambda r: r.speed)
 
 # Save fleet to JSON
-    def save_to_json(self, filename):
+    def save_to_json(self, filename: str) -> None:
         import json
         with open(filename, 'w') as f:
             json.dump([r.__dict__ for r in self.robots], f, indent=4)  

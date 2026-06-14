@@ -10,11 +10,11 @@
 
 import json
 import requests
-def get_weather(city):
+def get_weather(city: str) -> None:
     url = f"http://wttr.in/{city}?format=j1"
     response = requests.get(url)
     if response.status_code == 200:
-        data = response.json()
+        data: dict = response.json()
         # print(data) # Print the entire JSON response for debugging
         print (json.dumps(data, indent=2))  # Print the entire JSON response for debugging with indentation
         current_condition = data['current_condition'][0]
@@ -25,11 +25,11 @@ def get_weather(city):
         print(f"Failed to retrieve weather data for {city}. Status code: {response.status_code}")
 
 # v2.jokeapi.dev/joke/Any
-def get_joke():
+def get_joke() -> None:
     joke_url = "https://v2.jokeapi.dev/joke/Any"
     joke_response = requests.get(joke_url)
     if joke_response.status_code == 200:
-        joke_data = joke_response.json()
+        joke_data: dict = joke_response.json()
         if joke_data['type'] == 'single':
             print(f"Joke: {joke_data['joke']}")
         elif joke_data['type'] == 'twopart':
@@ -38,7 +38,7 @@ def get_joke():
 
 
 if __name__ == "__main__":
-    city = input("Enter a city name to get the weather: ")
-    get_weather(city)
+    city: str = input("Enter a city name to get the weather: ")
+    get_weather(city) 
     print("\nHere's a joke for you:")
     get_joke()
