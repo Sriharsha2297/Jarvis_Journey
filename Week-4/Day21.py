@@ -9,6 +9,7 @@
 import asyncio
 import feedparser
 import httpx
+import pytest
 
 async def get_weather(session: httpx.AsyncClient, city: str) -> str:
     url = f"https://wttr.in/{city}?format=3"
@@ -20,14 +21,17 @@ async def get_weather(session: httpx.AsyncClient, city: str) -> str:
         return f"Error fetching weather: {e}"
     except httpx.HTTPStatusError as e:
         return f"HTTP error fetching weather: {e}"
-    
+
+def format_quote(quote, author):
+    return f"{quote} — {author}"
+
 async def get_quote(session: httpx.AsyncClient) -> str:
     url = "https://zenquotes.io/api/random"
     try:
         response = await session.get(url, timeout=5)
         response.raise_for_status()
         data = response.json()
-        return f"{data[0]['q']} — {data[0]['a']}"
+        return format_quote(data[0]['q'], data[0]['a'])
     except httpx.RequestError as e:
         return f"Error fetching quote: {e}"
     except httpx.HTTPStatusError as e:
@@ -59,5 +63,11 @@ async def main(cities: list[str]):
         for result in results:
             print(result)
 
+def test_format_quote():
+    result = format_quote("Life is short", "Buddha")
+    assert result == "Life is short — Buddha"
+
+
 if __name__ == "__main__":
     asyncio.run(main([input("Enter a city for weather: ")]))
+    
